@@ -1,0 +1,58 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Navbar -->
+{% include "includes/_navbar.html" %}
+
+    <style>
+        .btn{
+            background-color: orangered;
+            color: antiquewhite;
+        }
+    </style>
+    
+    <div class="container my-3">
+        <div class="row">
+        {% if urunlerim|length > 0 %}
+            {% for urun in urunlerim %}
+            <div class="col-md-3">
+                <div class="card my-3">
+                    <img src="{{urun.resim.url}}" height="400" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <h5 class="card-title">{{urun.isim}}</h5>
+                            <p>Satıcı: {{urun.satici}}</p>
+                        </div>
+                        <p class="card-text">{{urun.aciklama}}</p>
+                        <p>{{urun.kategori.isim}}</p>
+                        {% for i in urun.altkategori.all %}
+                            <small class="mb-0">{{i.isim}} /</small>
+                        {% endfor %}
+                        <p class="card-text">{{urun.fiyat}} TL</p>
+                        <a href="{% url 'detay' urun.id %}" class="btn">Ürünü incele</a>
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <input type="hidden" name="urunId" value="{{urun.id}}">
+                            <input type="number" name="adet" value="1" class="mt-2" id="">
+                            <input type="submit" value="Sepete Ekle" class="btn btn-secondary mt-2">
+                        </form>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        <h1 class="text-center">Eşleşen ürün bulunamadı.</h1>
+        {% endif %}
+        </div>
+    </div>
+
+<!-- Footer -->
+{% include "includes/_footer.html" %}
+
+{% endblock content %}
+
+
+
+

@@ -1,0 +1,218 @@
+{% load static %}
+<!-- Navbar -->
+
+<header>
+    <div class="header-top mb-0 text">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6 mt-1 ">
+                    <ul class="d-flex list-unstyled justify-content-end">
+                        <li><a class="mx-2  text-decoration-none" href="">İndirim Kuponlarım</a></li>
+                        <li><a class="mx-2  text-decoration-none" href="">Trendyol'da Satış Yap</a></li>
+                        <li><a class="mx-2  text-decoration-none" href="">Yardım & Destek</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg bg-white p-0">
+        <div class="container p-0">
+            <a class="navbar-brand" href="{% url 'index' %}"><img src="{% static 'img/trendyolLogo.png' %}" alt="" width="146" height="100%"></a>
+            <button class="navbar-toggler rounded-5" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="input-group d-block mb-3">
+                    <form method="GET" role="search" class="d-flex mt-2">
+                        <input type="search" name="search" value="{{search}}" class="form-control" placeholder="Aradığınız ürün,kategori veya markayı yazınız" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                        <button type="submit"><i class="bi bi-search d-block"></i></button>
+                    </form>
+                </div>
+            </div>
+            <form class="d-flex" role="search">
+                <ul class="d-flex list-unstyled">
+                    {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <li><a class="mx-3 text-black text-decoration-none" href="#"><i class="bi bi-person mx-1"></i>Hesabım</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="">{{request.user}}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'urunOlustur' %}">Ürün Oluştur</a></li>
+                            <li><a class="dropdown-item" href="{% url 'logout' %}">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="dropdown">
+                        <li><a class="mx-3 text-black text-decoration-none" href="#"><i class="bi bi-person mx-1"></i>Giriş Yap</a></li>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'login' %}">Giriş Yap</a></li>
+                            <li><a class="dropdown-item" href="{% url 'register' %}">Üye Ol</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                    <li><a class="mx-3 text-black text-decoration-none" href=""><i class="bi bi-heart mx-1"></i>Favorilerim</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="mx-3 text-black text-decoration-none" href="{% url 'sepet' %}"><i class="bi bi-cart3 mx-1"></i>Sepetim</a></li>
+                    {% else %}
+                    <li><a class="mx-3 text-black text-decoration-none" href=""><i class="bi bi-cart3 mx-1"></i>Sepetim</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </form>
+        </div>
+    </nav>
+</header>
+
+<div class="header-content">
+    <div class="container">
+        <div class="row">
+            <div class="header-content-list col-md-12">
+                <ul class="nav-scroll d-flex list-unstyled">
+                    <li class='dropdown mx-1'><a href="">KADIN</a>
+                        <div class="dropdown-menu row">
+                            <div class="col-md-12 d-flex">
+                                <div class="col-2">
+                                <ul class='list-unstyled mx-4'>
+                                    <li><a class='text-black fw-bolder' href="{% url 'urunler' %}">Giyim</a></li>
+                                    <li><a href="">Tişört</a></li>
+                                    <li><a href="">Elbise</a></li>
+                                    <li><a href="">Gömlek</a></li>
+                                    <li><a href="">Kot Pantalon</a></li>
+                                    <li><a href="">Kot Ceket</a></li>
+                                    <li><a href="">Pantalon</a></li>
+                                    <li><a href="">Mont</a></li>
+                                    <li><a href="">Bluz</a></li>
+                                    <li><a href="">Ceket</a></li>
+                                    <li><a href="">Etek</a></li>
+                                    <li><a href="">Kazak</a></li>
+                                    <li><a href="">Tesettür</a></li>
+                                    <li><a href="">Büyük Beden</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-2">
+                                <ul class='list-unstyled mx-5'>
+                                    <li><a class='text-black fw-bolder' href="">Ayakkabı</a></li>
+                                    <li><a href="">Topuklu Ayakkabı</a></li>
+                                    <li><a href="">Sneaker</a></li>
+                                    <li><a href="">Günlük Ayakkabı</a></li>
+                                    <li><a href="">Babet</a></li>
+                                    <li><a href="">Sandalet</a></li>
+                                    <li><a href="">Bot</a></li>
+                                    <li><a class='text-black fw-bolder' href="">Aksesuar & Çanta</a></li>
+                                    <li><a href="">Çanta</a></li>
+                                    <li><a href="">Saat</a></li>
+                                    <li><a href="">Takı</a></li>
+                                    <li><a href="">Şapka</a></li>
+                                    <li><a href="">Cüzdan</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-2">
+                                <ul class='list-unstyled mx-4'>
+                                    <li><a class='text-black fw-bolder' href="">İç Giyim</a></li>
+                                    <li><a href="">Pijama Takımı</a></li>
+                                    <li><a href="">Gecelik</a></li>
+                                    <li><a href="">Sütyen</a></li>
+                                    <li><a href="">İç Çamaşırı Takımları</a></li>
+                                    <li><a href="">Fantazi Giyim</a></li>
+                                    <li><a href="">Çorap</a></li>
+                                    <li><a class='text-black fw-bolder' href="">Lüks & Designer</a></li>
+                                    <li><a href="">Lüks Çanta</a></li>
+                                    <li><a href="">Lüks Giyim</a></li>
+                                    <li><a href="">Lüks Ayakkabı</a></li>
+                                    <li><a href="">Tasarım Giyim</a></li>
+                                    <li><a href="">Tasarım Ayakkabı</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-2">
+                                <ul class='list-unstyled mx-4'>
+                                    <li><a class='text-black fw-bolder' href="">Kozmetik</a></li>
+                                    <li><a href="">Parfüm</a></li>
+                                    <li><a href="">Göz Makyajı</a></li>
+                                    <li><a href="">Cilt Bakım</a></li>
+                                    <li><a href="">Saç Bakımı</a></li>
+                                    <li><a href="">Makyaj</a></li>
+                                    <li><a href="">Ağız Bakım</a></li>
+                                    <li><a href="">Cinsel Sağlık</a></li>
+                                    <li><a href="">Vücut Bakım</a></li>
+                                    <li><a href="">Hijyenik Ped</a></li>
+                                    <li><a href="">Duş Jeli & Kremleri</a></li>
+                                    <li><a href="">Epilasyon Ürünleri</a></li>
+                                    <li><a href="">Ruj</a></li>
+                                    <li><a href="">Güneş Kremi</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-2">
+                                <ul class='list-unstyled mx-5'>
+                                    <li><a class='text-black fw-bolder' href="">Spor & Outdoor</a></li>
+                                    <li><a href="">Sweatshirt</a></li>
+                                    <li><a href="">Tişört</a></li>
+                                    <li><a href="">Spor Sütyeni</a></li>
+                                    <li><a href="">Tayt</a></li>
+                                    <li><a href="">Eşofman</a></li>
+                                    <li><a href="">Koşu Ayakkabısı</a></li>
+                                    <li><a href="">Spor Çantası</a></li>
+                                    <li><a href="">Spor Ekipmanları</a></li>
+                                    <li><a href="">Outdoor Ayakkabı</a></li>
+                                    <li><a href="">Kar Botu</a></li>
+                                    <li><a href="">Outdoor Ekipmanları</a></li>
+                                    <li><a href="">Sporcu Besinleri</a></li>
+                                    <li><a href="">Sporcu Aksesuarları</a></li>
+                                </ul>
+                            </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li class='mx-3'><a href="">ERKEK</a></li>
+                    <li class='mx-3'><a href="">ANNE & ÇOCUK</a></li>
+                    <li class='mx-3'><a href="">EV & MOBİLYA</a></li>
+                    <li class='mx-3'><a href="">SÜPERMARKET</a></li>
+                    <li class='mx-3'><a href="">KOZMETİK</a></li>
+                    <li class='mx-3'><a href="">AYAKKABI & ÇANTA</a></li>
+                    <li class='mx-3'><a href="">SAAT & AKSESUAR</a></li>
+                    <li class='mx-3'><a href="">ELEKTRONİK</a></li>
+                    <li class='mx-3'><a href="">SPOR & OUTDOOR</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="line w-100"></div>
+
+<div class="Myowl">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="owl-carousel mt-4">
+                    <a href=""><img src="{% static 'img/yazı-1.png' %}" alt=""><span>Sen De Al!</span></a>
+                    <a href=""><img src="{% static 'img/yazı-2.png' %}" alt=""><span>Sana Özel</span></a>
+                    <a href=""><img src="{% static 'img/koltuk.png' %}" alt=""><span>Kurumsal</span></a>
+                    <a href=""><img src="{% static 'img/mpLogo.jpg' %}" alt=""><span>Çekiliş Kuponu</span></a>
+                    <a href=""><img src="{% static 'img/xiaomi.png' %}" alt=""><span>Xiaomi</span></a>
+                    <a href=""><img src="{% static 'img/philips.png' %}" alt=""><span>Philips</span></a>
+                    <a href=""><img src="{% static 'img/apple.png' %}" alt=""><span>Apple</span></a>
+                    <a href=""><img src="{% static 'img/adidas.png' %}" alt=""><span>Adidas</span></a>
+                    <a href=""><img src="{% static 'img/trendyolmilla.png' %}" alt=""><span>TrendyolMilla</span></a>
+                    <a href=""><img src="{% static 'img/puma.png' %}" alt=""><span>Puma</span></a>
+                    <a href=""><img src="{% static 'img/samsung.png' %}" alt=""><span>Samsung</span></a>
+                    <a href=""><img src="{% static 'img/nike.png' %}" alt=""><span>Nike</span></a>
+                    <a href=""><img src="{% static 'img/dilvin.png' %}" alt=""><span>Dilvin</span></a>
+                    <a href=""><img src="{% static 'img/hummel.png' %}" alt=""><span>HUMMEL</span></a>
+                    <a href=""><img src="{% static 'img/USPoloAssn.png' %}" alt=""><span>U.S. Polo Assn.</span></a>
+                    <a href=""><img src="{% static 'img/inci.png' %}" alt=""><span>İnci</span></a>
+                    <a href=""><img src="{% static 'img/jackJones.png' %}" alt=""><span>Jack & Jones</span></a>
+                    <a href=""><img src="{% static 'img/molfix.png' %}" alt=""><span>Molfix</span></a>
+                    <a href=""><img src="{% static 'img/DSDamat.png' %}" alt=""><span>D'S Damat</span></a>
+                    <a href=""><img src="{% static 'img/dyson.png' %}" alt=""><span>DYSON</span></a>
+                    <a href=""><img src="{% static 'img/Pierrecardin.jpg' %}' %}" alt=""><span>Pierre Cardin</span></a>
+                    <a href=""><img src="{% static 'img/karaca.png' %}" alt=""><span>Karaca</span></a>
+                    <a href=""><img src="{% static 'img/Defacto.png' %}" alt=""><span>Defacto</span></a>
+                    <a href=""><img src="{% static 'img/altinyildiz.png' %}" alt=""><span>ALTINYILDIZ CLASSICS</span></a>
+                    <a href=""><img src="{% static 'img/stradivarius.png' %}" alt=""><span>Stradivarius</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

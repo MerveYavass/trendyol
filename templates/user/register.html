@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block content %}
+
+<!-- Navbar -->
+{% include "includes/_navbar.html" %}
+
+    <div class="container my-5">
+        <form action="" method="POST" class="w-50 m-auto border p-4">
+            {% csrf_token %}
+            <label for="">Kullanıcı Adı</label>
+            <input type="text" name="username" value="{{username}}" required id="" class="form-control">
+            <label for="">E-mail</label>
+            <input type="text" name="email" id="" value="{{email}}" required class="form-control">
+            <label for="">Şifre</label>
+            <input type="password" name="password1" required id="" class="form-control">
+            <label for="">Şifre Onay</label>
+            <input type="password" name="password2" required id="" class="form-control">
+            <input type="submit" value="Kayıt Ol" class="btn btn-primary mt-2">
+        </form>
+    </div>
+
+    <!-- Footer -->
+{% include "includes/_footer.html" %}
+
+{% endblock content %}

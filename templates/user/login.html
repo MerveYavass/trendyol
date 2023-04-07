@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<!-- Navbar -->
+{% include "includes/_navbar.html" %}
+
+<style>
+    .login-inside {
+        border: 1px solid grey;
+        padding: 2rem;
+    }
+    .btn {
+        background-color: orangered;
+    }
+    .btn:hover {
+    background-color: rgb(228, 96, 48);
+    }
+    body {
+        height: 0;
+    }
+</style>
+
+<div class="login d-flex justify-content-center">
+    <!-- form -->
+    <form action="" method="POST" class="hero-text2 mt-5 mb-5">
+        {% csrf_token %}
+        <h2 class=" d-flex justify-content-center">Merhaba,</h2>
+        <h5>Trendyol'a giriş yap veya hesap oluştur,indirimleri kaçırma!</h5>
+        <div class="mb-3">
+            <h6>E-Posta</h6>
+            <input type="text" name="username" class="form-control form-control-lg">
+            <h6 class="mt-3">Şifre</h6>
+            <input type="password" name="password" id="" class="form-control form-control-lg mt-5">
+        </div>
+        <div class="d-grid gap-2">
+            <button  class="btn btn-danger btn-lg" type="submit">Giriş Yap</button>
+        </div>
+    </form>
+</div>
+
+
+<!-- Footer -->
+{% include "includes/_footer.html" %}
+
+{% endblock content %}
